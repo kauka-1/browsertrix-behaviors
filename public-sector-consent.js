@@ -9,8 +9,10 @@ class KelaVisitorStatsConsent {
     return {};
   }
 
-  async run(ctx) {
+  async* run(ctx) {
     const { Lib } = ctx;
+
+    yield { msg: "Kela consent behavior started" };
 
     await Lib.sleep(3000);
 
@@ -19,6 +21,7 @@ class KelaVisitorStatsConsent {
       document.querySelector('[aria-label="Kävijätilastot"]');
 
     if (!banner) {
+      yield { msg: "Kela banner not found" };
       return;
     }
 
@@ -30,16 +33,17 @@ class KelaVisitorStatsConsent {
 
     if (rejectButton) {
       rejectButton.click();
-      await Lib.sleep(1500);
+      yield { msg: "Clicked Kela En hyväksy" };
+      await Lib.sleep(2000);
     }
 
-    // Varotoimi: jos banneri jäi vielä DOMiin, poistetaan se näkyvistä.
     const remainingBanner =
       document.querySelector(".kds-cookie-banner") ||
       document.querySelector('[aria-label="Kävijätilastot"]');
 
     if (remainingBanner) {
       remainingBanner.remove();
+      yield { msg: "Removed remaining Kela banner" };
       await Lib.sleep(500);
     }
   }
