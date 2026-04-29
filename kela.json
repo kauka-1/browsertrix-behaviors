@@ -1,0 +1,22 @@
+{
+  "title": "kela",
+  "steps": [
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [
+        [
+          "aria/En hyväksy kävijätilastojen keräämistä"
+        ],
+        [
+          "text/En hyväksy"
+        ],
+        [
+          "#kela-cookie-banner button:nth-of-type(2)"
+        ]
+      ],
+      "offsetY": 22,
+      "offsetX": 38
+    }
+  ]
+}
