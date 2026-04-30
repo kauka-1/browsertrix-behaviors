@@ -14,9 +14,7 @@
         [
           "#kela-cookie-banner button:nth-of-type(2)"
         ]
-      ],
-      "offsetY": 22,
-      "offsetX": 38
+      ]
     }
   ]
 }
